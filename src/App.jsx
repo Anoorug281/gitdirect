@@ -5,32 +5,26 @@ import Avatar from "./components/Avatar"
 
 function App() {
  
+  function createCard(item){
+    return(
+      <Card
+       key ={item.id}
+       name = {item.name}
+       image = {item.imgUrl}
+       phone ={item.phone}
+       email ={item.email}
+
+       />
+
+    )
+  }
 
   return (
     <>
      <h1 className="heading">My contacts</h1>
-     <Avatar imgUrl="https://cdn.pixabay.com/photo/2023/04/21/15/42/portrait-7942151_640.jpg" />
-<Card
-name= {contactFile[0].name} 
-imgUrl={contactFile[0].imgUrl}
-phone={contactFile[0].phone}
-email={contactFile[0].email}
-/>
-
-<Card 
-name= {contactFile[1].name} 
-imgUrl={contactFile[1].imgUrl}
-phone={contactFile[1].phone}
-email={contactFile[1].email}
-/>
-
-<Card
-name= {contactFile[2].name} 
-imgUrl={contactFile[2].imgUrl}
-phone={contactFile[2].phone}
-email={contactFile[2].email}
-/>
-
+   {
+    contactFile.map (createCard)
+   }
   
     </>
   )
