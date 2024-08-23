@@ -1,32 +1,37 @@
 import React from "react"
-import Contact from "./components/Contact"
+import Card from "./components/Card"
+import contactFile from "./components/Contact"
+import Avatar from "./components/Avatar"
 
 function App() {
  
 
   return (
     <>
-     <h1 className="text-3xl text-bold mt-3 mb-3  text-center">My contacts</h1>
-     <Contact 
-     name="Beyonce" 
-     imgUrl="https://blackhistorywall.files.wordpress.com/2010/02/picture-device-independent-bitmap-119.jpg"
-     phone="+123 456 789" 
-     email="b@beyonce.com"/>
+     <h1 className="heading">My contacts</h1>
+     <Avatar imgUrl="https://cdn.pixabay.com/photo/2023/04/21/15/42/portrait-7942151_640.jpg" />
+<Card
+name= {contactFile[0].name} 
+imgUrl={contactFile[0].imgUrl}
+phone={contactFile[0].phone}
+email={contactFile[0].email}
+/>
 
-     <Contact 
-     name="Jack Bauer"
-     imgUrl="https://pbs.twimg.com/profile_images/625247595825246208/X3XLea04_400x400.jpg"
-     phone="+987 654 321"
-     email="jack@nowhere.com" 
-     />
+<Card 
+name= {contactFile[1].name} 
+imgUrl={contactFile[1].imgUrl}
+phone={contactFile[1].phone}
+email={contactFile[1].email}
+/>
 
-     <Contact 
-     name="Chuck Norris"
-     imgUrl="https://i.pinimg.com/originals/e3/94/47/e39447de921955826b1e498ccf9a39af.png"
-     phone="+918 372 574"
-     email="gmail@chucknorris.com"
-     />
-     
+<Card
+name= {contactFile[2].name} 
+imgUrl={contactFile[2].imgUrl}
+phone={contactFile[2].phone}
+email={contactFile[2].email}
+/>
+
+  
     </>
   )
 }
