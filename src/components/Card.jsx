@@ -7,16 +7,9 @@ const Card = (props) => {
     
   return (
     <>
-    <div className="card">
-        <div className="top">
-        <h1 className="name">{props.name}</h1>
-      <Avatar imgUrl = {props.image} />
-        </div>
-        <div className="bottom">
-        <Detailinfo info={props.phone} />
-        <Detailinfo info={props.email} />
-        </div>       
-    </div>
+      <div>
+        <h1></h1>
+      </div>
     
     </>
   )
