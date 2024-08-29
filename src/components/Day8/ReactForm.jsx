@@ -1,4 +1,4 @@
-import PreviousMap from 'postcss/lib/previous-map'
+
 import React,{ useState } from 'react'
 
 const ReactForm = () => {
@@ -11,44 +11,26 @@ const ReactForm = () => {
     })
 
 
+  
+
+ 
+
     function handleChange(event){
-                const newValue = event.target.value
-                const inputName= event.target.name 
+                //const newValue = event.target.value
+                //const inputName= event.target.name 
                
-                console.log(newValue)
-                console.log(inputName)
-            
+                const {name,value} = event.target
+
+
 setFullName( preValue => {
-    if (inputName === 'fName'){
-        return{
-            fName : newValue,
-            lName : preValue.lName
-           
-        }
-    }else if (inputName === 'lName'){
-        return{
-            fName : preValue.fName,
-            lName : newValue,
-            email : preValue.email
-        }
-    }else if (inputName === 'email'){
-        return{
-            fName : preValue.fName,
-            lName : preValue.lName,
-            email : newValue,
-            password : preValue.password
-            
-        }
-    }else if (inputName === 'password'){
-        return{
-            fName : preValue.fName,
-            lName : preValue.lName,
-            email : preValue.email,
-            password : newValue
-        }
+    return{
+        ...preValue,
+        [name] : value
     }
+    
 })
-    }
+   
+}
     
   
   
@@ -72,7 +54,10 @@ setFullName( preValue => {
     <>
        <div className='w-[400px] h-[400]px mx-auto mt-20'>
            <h1 className='text-2xl'>Hello {fullName.fName} {fullName.lName}</h1>
+            <p className ='text-sm'>{fullName.email}</p>
+            
             <form onSubmit= {handleSubmit }>
+                <label> First Name : </label>
             <input 
             name='fName'
             onChange={handleChange}
@@ -83,6 +68,7 @@ setFullName( preValue => {
             style={{background : "white"}}
             />
             <br></br>
+            <label>Last Name : </label>
             <input
             name='lName'
             onChange={handleChange}
@@ -92,6 +78,7 @@ setFullName( preValue => {
             className='p-4 bg-gray-100 text-center border border-black-200'
             />
             <br></br>
+            <label>E-mail : </label>
             <input 
             name='email'
             onChange={handleChange}
@@ -102,7 +89,7 @@ setFullName( preValue => {
             style={{background : "white"}}
             />
             <br></br>
-
+            <label>Password : </label>
             <input 
             name='password'
             onChange={handleChange}
