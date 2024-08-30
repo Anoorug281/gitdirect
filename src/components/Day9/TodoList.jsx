@@ -1,20 +1,26 @@
 import React, {useState} from 'react'
+import ListItems from './ListItems'
+import InputItem from './inputItem'
 
 const TOdoList = () => {
-        const [productName, setProductName] = useState("")  
+          
         const [items,setItems] = useState([])
         
         
-        function handleChange(event){
-            const newValue = event.target.value
-            setProductName(newValue)
+       
+
+        function addItems(productName){
+            setItems(preValue => (
+               [...preValue, productName] ))
+            
         }
 
-        function addItems(){
-            setItems(preValue => {
-                return  [...preValue, productName]
+        function deleteItem(id){
+           setItems( preValue => {
+            return preValue.filter((item,index) =>{
+              return index !== id
             })
-            setProductName("")
+           })
         }
 
 console.log("items",items)
@@ -25,24 +31,18 @@ console.log("items",items)
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
-      <div className="form">
-        <input 
-        onChange={handleChange}
-        type="text" 
-        value={productName}
-        placeholder='buy item '/>
-        <button 
-        onClick={addItems}
-        >
-          <span>Add</span>
-        </button>
-      </div>
+        <InputItem onadd={addItems}/>
       <div>
         <ul>
           {
-          items.map((listItem,index) => {
+          items.map((listItems,index) => {
             return(
-                <li key={index}>{listItem}</li>
+               <ListItems 
+               key={index} 
+               id={index} 
+               listItems={listItems} 
+               onchecked={deleteItem}/>
+
             )
           })
         }
